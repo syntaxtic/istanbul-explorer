@@ -1,0 +1,65 @@
+<!doctype HTML>
+<html>
+    <!-- Udacity FSND Part 4 Project: Istanbul Explorer
+         Last Update: January 19, 2018-->
+    <head>
+        <!-- Page Icon & Title on tab -->
+        <title>Istanbul Explorer</title>
+        <link rel="shortcut icon" type="image/x-icon" href="img/kk.png">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1"/>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav>
+            <!-- Banner -->
+            <img src="img/ie.png" alt="Istanbul Explorer">
+
+            <!-- Filter Buttons for wide screens-->
+            <div id="buttons">
+                <button data-bind="click: filtering" value="-1">All</button>
+                <button data-bind="click: filtering" value="0">Historical</button>
+                <button data-bind="click: filtering" value="1">Museum</button>
+                <button data-bind="click: filtering" value="2">Shopping</button>
+                <button data-bind="click: filtering" value="3">Others</button>
+            </div>
+
+            <!-- Filter DropDown Menu for narrow screens -->
+            <select data-bind="click: filtering" class="filter">
+                <option value="-1">All</option>
+                <option value="0">Historical</option>
+                <option value="1">Museum</option>
+                <option value="2">Shopping</option>
+                <option value="3">Others</option>
+            </select>
+
+            <!-- List of places -->
+            <ul data-bind="foreach: listing()">
+                <li data-bind="text: name, attr: { 'id': $index() }, click: see">Place Name</li>
+            </ul>
+        </nav>
+
+        <!-- Hamburger Icon -->
+        <div data-bind="click: openNav" class="navigator">
+            <div class="nav-icon"></div>
+        </div>
+
+        <!-- Map -->
+        <div class="content">
+            <div id="map"></div>
+        </div>
+
+        <!-- Link to jQuery, KnockOut, Google Maps & my script -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/script.js"></script>
+        <script async defer onerror="mapfail()"
+            src="https://maps.googleapis.com/maps/api/js?key=KEY_HERE&callback=initMap">
+        </script>
+    </body>
+</html>
